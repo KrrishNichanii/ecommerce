@@ -38,9 +38,9 @@ export const deleteItemFromCartAsync = createAsyncThunk(
 
 export const resetCartAsync = createAsyncThunk(
     'cart/resetCart' ,
-    async () => {
+    async (userId) => {
       console.log('Reset cart called ');
-        const response = await resetCart() ;
+        const response = await resetCart(userId) ;
         return response.data ; 
     }
 )

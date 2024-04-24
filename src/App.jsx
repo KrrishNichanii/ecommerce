@@ -121,6 +121,7 @@ function App() {
     if(user){
     dispatch(fetchItemsByUserIdAsync(user.id))
     dispatch(fetchLoggedInUserAsync(user.id));
+    //dispatch(fetchLoggedInUserAsync(user.id));
     }
     //console.log('User in App ' , user);
   } ,[dispatch ,user])

@@ -78,8 +78,8 @@ const { Order } = require("../model/Order");
 
 exports.fetchOrdersByUser = async (req, res) => {
     const { userId } = req.params;
-    const {id} = req.user ; 
-    console.log('User id obtained from cookie ' , id);
+    // const {id} = req.user ; 
+    //console.log('User id obtained from cookie ' , id);
     try {
       const orders = await Order.find({ user: userId });
   

@@ -7,10 +7,11 @@ import { resetOrder } from '../features/order/orderSlice';
 
 function OrderSuccess() {
     const {id} = useParams()
-    const dispatch = useDispatch() ; 
-    const user = dispatch(selectLoggedInUser) ; 
+    const dispatch = useDispatch() ;
+    const user = useSelector(selectLoggedInUser) ; 
     useEffect(() =>{
         //reset cart
+        console.log('User in order success' , user);
       dispatch(resetCartAsync(user.id)) ; 
       //reset order
       dispatch(resetOrder()) ; 

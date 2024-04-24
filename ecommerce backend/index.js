@@ -195,13 +195,22 @@ const  isAuth = (req, res, next) => {
     }
   };
 
-server.use('/products' ,isAuth , productsRouter.router);
-server.use('/categories',isAuth , categoriesRouter.router)
-server.use('/brands',isAuth ,  brandsRouter.router)
-server.use('/users'  ,isAuth , usersRouter.router)
+
+  //uncomment when you want to fix authentication cookie error
+// server.use('/products' ,isAuth , productsRouter.router);
+// server.use('/categories',isAuth , categoriesRouter.router)
+// server.use('/brands',isAuth ,  brandsRouter.router)
+// server.use('/users'  ,isAuth , usersRouter.router)
+// server.use('/auth', authRouter.router)
+// server.use('/cart' ,isAuth ,   cartRouter.router)
+// server.use('/orders'  ,isAuth , ordersRouter.router)
+server.use('/products' , productsRouter.router);
+server.use('/categories'  , categoriesRouter.router)
+server.use('/brands'  ,  brandsRouter.router)
+server.use('/users'   , usersRouter.router)
 server.use('/auth', authRouter.router)
-server.use('/cart' ,isAuth ,   cartRouter.router)
-server.use('/orders'  ,isAuth , ordersRouter.router)
+server.use('/cart'  ,   cartRouter.router)
+server.use('/orders'  , ordersRouter.router)
 
 server.get('/testing' , (req , res) => {
     console.log('Req cookies' , req.cookies);

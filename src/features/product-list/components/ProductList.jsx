@@ -225,7 +225,7 @@ function ProductList() {
         </div>
      
   )  
-  else null
+  else return null ; 
 }
 
 export default ProductList;

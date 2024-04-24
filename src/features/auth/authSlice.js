@@ -56,7 +56,7 @@ export const signOutAsync = createAsyncThunk(
     }
 )
 export const authSlice = createSlice({
-    name: 'user' ,
+    name: 'auth' ,
     initialState ,
     reducers: {
 
@@ -77,6 +77,7 @@ export const authSlice = createSlice({
             state.status = 'idle' ;
             console.log('Action payload filling loggedinUserser' , action.payload);
             state.loggedInUserToken =  action.payload
+            console.log('State-> auth',state.auth);
            })
            .addCase(checkUserAsync.rejected ,(state ,action) => {
             state.status = 'idle' ;
@@ -90,16 +91,19 @@ export const authSlice = createSlice({
             state.status = 'idle' ;
             state.loggedInUserToken = null ;
            })
-           .addCase(checkAuthAsync.pending ,(state ,action) => {
-            state.status = 'idle' ;
-           })
-           .addCase(checkAuthAsync.fulfilled ,(state ,action) => {
-            state.status = 'idle' ;
-            state.loggedInUserToken = action.payload ;
-           })
+        //    .addCase(checkAuthAsync.pending ,(state ,action) => {
+        //     state.status = 'idle' ;
+        //    })
+        //    .addCase(checkAuthAsync.fulfilled ,(state ,action) => {
+        //     state.status = 'idle' ;
+        //     state.loggedInUserToken = action.payload ;
+        //    })
     }
 })
 
-export const selectLoggedInUser = (state) => state.auth.loggedInUserToken
+export const selectLoggedInUser = (state) =>{
+    console.log('Logging auth ' , state.auth);
+    return state.auth.loggedInUserToken ; 
+} 
 export const selectError = (state) => state.auth.error
 export default authSlice.reducer ; 
